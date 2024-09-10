@@ -7,7 +7,7 @@ This **To-Do List Application** is a web-based tool that allows users to manage 
 - **Add New Tasks**: Create a task with a title, due date, time, category, and priority level.
 - **Edit Tasks**: Modify existing tasks.
 - **Delete Tasks**: Remove tasks once completed or no longer required.
-- **Mark as Complete**: Mark tasks as completed.
+- **Mark as Completed**: Mark tasks as completed.
 
 #### Technologies Used
 - **HTML5**: Structure of the application.
