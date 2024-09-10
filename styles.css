@@ -1,0 +1,277 @@
+/* Ensure the video covers the entire viewport */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place the video behind all content */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a font and basic styling to the whole page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling due to fixed video */
+}
+
+/* Container styling for centering content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Adjusted width */
+    max-width: 1000px; /* Maximum width to avoid too large on larger screens */
+    height: auto; /* Height auto to adjust based on content */
+    padding: 20px;
+    position: absolute; /* Position container over the video */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    z-index: 1; /* Ensure container is above the video */
+}
+
+/* Title styling with flip effect */
+h1 {
+    text-align: center;
+    color: transparent; /* Hide text color for flip effect */
+    font-size: 48px; /* Increased font size */
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    perspective: 1000px; /* Perspective to give depth to the flip effect */
+    font-family: 'Arial Black', sans-serif; /* Changed font style */
+}
+
+/* Front side of the flip */
+h1::before,
+h1::after {
+    content: "To-Do List";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    font-size: inherit; /* Inherit font size from h1 */
+}
+
+/* Front side of the flip */
+h1::before {
+    color: #333; /* Text color for the front side */
+    animation: flip 3s infinite; /* Flip animation */
+}
+
+/* Back side of the flip (hidden) */
+h1::after {
+    color: #333; /* Text color for the back side (same as front) */
+    transform: rotateY(180deg);
+    animation: flip 3s infinite; /* Flip animation */
+}
+
+/* Keyframe animation for flipping effect */
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Button styling */
+button {
+    background-color: #4e024d; 
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 8px; /* More rounded corners for buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color:#ac07be; 
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Task form styling */
+#task-form {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Input and select elements */
+#task-form input,
+#task-form select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* More rounded corners */
+    font-size: 14px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+/* Time and AM/PM styling */
+.time-group {
+    display: flex;
+    gap: 15px;
+}
+
+.time-group input[type="time"] {
+    flex: 2;
+}
+
+.time-group select {
+    flex: 1;
+}
+
+/* Task list container styling */
+.task-list-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Task list styling */
+#task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#task-list li {
+    background-color: #f9f9f9;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for list items */
+    display: flex;
+    align-items: center; /* Align items vertically */
+    position: relative; /* For positioning the tick mark */
+    overflow: hidden; /* Ensure no overflow issues */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+}
+
+/* Increase size of tick mark and align it to the left */
+.completed::before {
+    content: '\2713'; /* Unicode tick mark */
+    color: #4CAF50; /* Green color for the tick mark */
+    font-size: 40px; /* Increased size of the tick mark */
+    position: absolute;
+    left: 10px; /* Position the tick mark on the left side */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+}
+
+/* Task info styling */
+.task-info {
+    flex: 1;
+    margin-left: 50px; /* Add space to the left for the tick mark */
+}
+
+.task-title {
+    font-weight: bold;
+    font-size: 18px; /* Larger font size for task titles */
+}
+
+.task-category,
+.task-priority,
+.task-due {
+    font-size: 14px;
+    margin-left: 12px;
+    color: #6c757d;
+}
+
+/* Button styling for task actions */
+.complete-btn {
+    background-color: #5a0438; 
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    background-color: #ff4c4c; 
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.edit-btn {
+    background-color: #a61954; 
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/* Priority-specific styling */
+.priority-low {
+    border-left: 8px solid rgb(253, 3, 236); 
+}
+
+.priority-medium {
+    border-left: 8px solid rgb(253, 3, 236);
+}
+
+.priority-high {
+    border-left: 8px solid rgb(253, 3, 236);
+}
+
+/* Category-specific styling */
+.category-personal {
+    border-left: 8px solid #d73664;
+}
+
+.category-work {
+    border-left: 8px solid #d73664;
+}
+
+.category-health {
+    border-left: 8px solid  #d73664; 
+}
+
+/* Styling for completed tasks */
+.completed {
+    text-decoration: line-through;
+    color: #a9a9a9;
+    position: relative; /* Position for the tick mark */
+    padding-left: 50px; /* Space for the tick mark */
+}
+
+
+
+
+

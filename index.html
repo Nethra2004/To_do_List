@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+ <!-- Background Video -->
+ <video autoplay muted loop id="background-video">
+    <source src="https://videos.pexels.com/video-files/7234903/7234903-uhd_2560_1440_30fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+    <div class="container">
+        <h1>To-Do List</h1>
+
+        <!-- Add Task Button -->
+        <button id="add-task-button">Add New Task</button>
+
+        <!-- Task Form (Hidden Initially) -->
+        <div id="task-form" style="display: none;">
+            <input type="text" id="task-title" placeholder="Enter new task" required>
+            <input type="date" id="due-date" placeholder="Due date" required>
+            
+            <!-- Time and AM/PM Group -->
+            <div class="time-group">
+                <input type="time" id="due-time" placeholder="Due time" required>
+                <select id="ampm">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+
+            <!-- Category -->
+            <select id="category">
+                <option value="" disabled selected>Select category</option>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Health">Health</option>
+            </select>
+
+            <!-- Priority -->
+            <select id="priority">
+                <option value="" disabled selected>Select priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <button id="save-task">Save Task</button>
+            <button id="update-task" style="display: none;">Update Task</button>
+
+        </div>
+
+        <!-- Task List Container -->
+        <div class="task-list-container">
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
